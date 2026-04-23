@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro Sync — Алгоритмы ритма</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #080810;
+    --surface: #0e0e1c;
+    --card: #141422;
+    --card-hover: #1a1a2e;
+    --accent: #5b21f0;
+    --accent-glow: rgba(91,33,240,0.35);
+    --accent2: #00f5a0;
+    --accent2-dim: rgba(0,245,160,0.15);
+    --text: #ddddf0;
+    --muted: #6868a0;
+    --border: rgba(91,33,240,0.18);
+    --border-soft: rgba(255,255,255,0.06);
+    --mono: 'Space Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(91,33,240,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,33,240,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Header */
+  header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 30px;
+    border-bottom: 1px solid var(--border-soft);
+    backdrop-filter: blur(12px);
+    background: rgba(8,8,16,0.7);
+    position: sticky;
+    top: 0;
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.5px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent2);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent2);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .header-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Layout */
+  .layout {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 320px 1fr 300px;
+    gap: 0;
+    min-height: calc(100vh - 62px);
+  }
+
+  /* Sidebar panels */
+  .sidebar-left, .sidebar-right {
+    border-right: 1px solid var(--border-soft);
+    padding: 24px 20px;
+    overflow-y: auto;
+    height: calc(100vh - 62px);
+    position: sticky;
+    top: 62px;
+  }
+
+  .sidebar-right {
+    border-right: none;
+    border-left: 1px solid var(--border-soft);
+  }
+
+  .main-content {
+    padding: 24px;
+    overflow-y: auto;
+  }
+
+  /* Section labels */
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-soft);
+  }
+
+  /* Filters */
+  .filter-block {
+    margin-bottom: 28px;
+  }
+
+  .filter-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .filter-title span.val {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent2);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  /* BPM Slider */
+  .bpm-display {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .bpm-number {
+    font-family: var(--mono);
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .bpm-unit {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--card-hover);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent2);
+    box-shadow: 0 0 12px rgba(0,245,160,0.5);
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+
+  input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+  }
+
+  /* Chips */
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chip {
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: var(--mono);
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .chip:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  .chip.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 16px var(--accent-glow);
+  }
+
+  /* Search button */
+  .search-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .search-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--accent-glow);
+  }
+
+  .search-btn:hover::before { opacity: 1; }
+  .search-btn:active { transform: translateY(0); }
+
+  /* Results area */
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    min-height: 24px;
+  }
+
+  .results-count {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .results-count span {
+    color: var(--accent2);
+    font-weight: 700;
+  }
+
+  .results-grid {
+    display: grid;
+    gap: 8px;
+  }
+
+  /* Track card */
+  .track-card {
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: default;
+    transition: all 0.2s;
+    animation: fadeSlide 0.35s ease-out both;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .track-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: transparent;
+    transition: background 0.2s;
+    border-radius: 3px 0 0 3px;
+  }
+
+  .track-card:hover {
+    background: var(--card-hover);
+    border-color: var(--border);
+    transform: translateX(3px);
+  }
+
+  .track-card:hover::before {
+    background: var(--accent2);
+  }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .track-index {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    width: 22px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .track-info { flex: 1; min-width: 0; }
+
+  .track-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 3px;
+  }
+
+  .track-meta {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .track-meta .sep {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--muted);
+    opacity: 0.4;
+    flex-shrink: 0;
+  }
+
+  .bpm-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent2);
+    background: var(--accent2-dim);
+    padding: 2px 7px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .key-badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: #8080d0;
+    background: rgba(91,33,240,0.12);
+    padding: 2px 7px;
+    border-radius: 5px;
+    white-space: nowrap;
+  }
+
+  .add-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    color: var(--muted);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .add-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  /* Load more */
+  .load-more-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+    background: transparent;
+    border: 1px dashed rgba(91,33,240,0.3);
+    border-radius: 12px;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: none;
+  }
+
+  .load-more-btn:hover {
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  /* Empty state */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+  }
+
+  .empty-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    opacity: 0.3;
+  }
+
+  .empty-state p {
+    font-size: 14px;
+  }
+
+  /* Playlist sidebar */
+  .playlist-empty {
+    text-align: center;
+    padding: 40px 10px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .playlist-empty-icon {
+    font-size: 28px;
+    opacity: 0.2;
+    margin-bottom: 10px;
+  }
+
+  .playlist-track {
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s;
+  }
+
+  .playlist-track:hover {
+    border-color: rgba(255,77,77,0.3);
+  }
+
+  .pl-info { flex: 1; min-width: 0; }
+  .pl-name { font-size: 12px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pl-artist { font-size: 11px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .pl-remove {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .pl-remove:hover {
+    background: rgba(255,77,77,0.15);
+    color: #ff4d4d;
+  }
+
+  .playlist-footer {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .export-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent2-dim);
+    border: 1px solid rgba(0,245,160,0.3);
+    border-radius: 10px;
+    color: var(--accent2);
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .export-btn:hover {
+    background: rgba(0,245,160,0.25);
+    box-shadow: 0 0 16px rgba(0,245,160,0.2);
+  }
+
+  .pl-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .pl-stat {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .pl-stat-num {
+    font-family: var(--mono);
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .pl-stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .sidebar-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .playlist-scroll {
+    flex: 1;
+    overflow-y: auto;
+    margin: 12px 0;
+    padding-right: 2px;
+  }
+
+  /* Toast notification */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--accent2);
+    color: #020c07;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 100;
+    white-space: nowrap;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .layout { grid-template-columns: 280px 1fr 260px; }
+  }
+
+  @media (max-width: 820px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar-left, .sidebar-right { 
+      height: auto; 
+      position: static;
+      border: none;
+      border-bottom: 1px solid var(--border-soft);
+    }
+  }
+
+  /* YouTube Player Bar */
+  .yt-player-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10,10,20,0.97);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .yt-player-bar.visible {
+    transform: translateY(0);
+  }
+
+  .yt-iframe-wrap {
+    flex-shrink: 0;
+    width: 160px;
+    height: 90px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+
+  .yt-iframe-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .yt-track-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .yt-track-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+  }
+
+  .yt-track-artist {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .yt-track-badges {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .yt-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    color: var(--muted);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .yt-close-btn:hover {
+    background: rgba(255,80,80,0.15);
+    border-color: rgba(255,80,80,0.4);
+    color: #ff5050;
+  }
+
+  .yt-open-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,0,0,0.4);
+    background: rgba(255,0,0,0.1);
+    color: #ff4444;
+    font-size: 12px;
+    font-family: var(--mono);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+
+  .yt-open-btn:hover {
+    background: rgba(255,0,0,0.2);
+    border-color: rgba(255,0,0,0.7);
+  }
+
+  .play-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .play-btn:hover {
+    background: rgba(255,0,0,0.15);
+    border-color: rgba(255,80,80,0.5);
+    color: #ff5050;
+  }
+
+  .play-btn.playing {
+    background: rgba(255,0,0,0.15);
+    border-color: rgba(255,80,80,0.5);
+    color: #ff5050;
+  }
+
+  body.player-open .main-content,
+  body.player-open .sidebar-left,
+  body.player-open .sidebar-right {
+    padding-bottom: 130px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <div class="logo-dot"></div>
+    PRO SYNC
+  </div>
+  <div class="header-tag">rhythm algorithms v2</div>
+</header>
+
+<div class="layout">
+
+  <!-- Left sidebar: filters -->
+  <aside class="sidebar-left">
+    <div class="section-label">Параметры</div>
+
+    <div class="filter-block">
+      <div class="filter-title">
+        Темп трека
+        <span class="val" id="bpmVal">120 BPM</span>
+      </div>
+      <div class="bpm-display">
+        <span class="bpm-number" id="bpmBig">120</span>
+        <span class="bpm-unit">BPM</span>
+      </div>
+      <input type="range" id="bpmSlider" min="60" max="200" value="120" step="1">
+      <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:8px;">
+        <span>60</span><span>200</span>
+      </div>
+    </div>
+
+    <div class="filter-block">
+      <div class="filter-title">Тональность</div>
+      <div class="chips" id="keyRow">
+        <div class="chip active" data-key="any">Любая</div>
+        <div class="chip" data-key="C">C</div>
+        <div class="chip" data-key="C#">C#</div>
+        <div class="chip" data-key="D">D</div>
+        <div class="chip" data-key="E">E</div>
+        <div class="chip" data-key="F">F</div>
+        <div class="chip" data-key="G">G</div>
+        <div class="chip" data-key="A">A</div>
+        <div class="chip" data-key="B">B</div>
+      </div>
+    </div>
+
+    <div class="filter-block">
+      <div class="filter-title">Лад</div>
+      <div class="chips" id="modeRow">
+        <div class="chip active" data-mode="any">Любой</div>
+        <div class="chip" data-mode="major">Мажор</div>
+        <div class="chip" data-mode="minor">Минор</div>
+      </div>
+    </div>
+
+    <div class="filter-block">
+      <div class="filter-title">
+        Допуск BPM
+        <span class="val" id="rangeVal">±15</span>
+      </div>
+      <input type="range" id="rangeSlider" min="5" max="30" value="15" step="5">
+      <div style="display:flex; justify-content:space-between; font-family:var(--mono); font-size:10px; color:var(--muted); margin-top:8px;">
+        <span>±5</span><span>±30</span>
+      </div>
+    </div>
+
+    <button class="search-btn" id="searchBtn">Найти треки</button>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <div class="section-label">Результаты</div>
+
+    <div class="results-header">
+      <div class="results-count" id="resultsCount" style="opacity:0">
+        Найдено <span id="countNum">0</span> треков
+      </div>
+    </div>
+
+    <div class="results-grid" id="results">
+      <div class="empty-state">
+        <div class="empty-icon">◈</div>
+        <p>Настройте фильтры и нажмите<br>«Найти треки»</p>
+      </div>
+    </div>
+
+    <button class="load-more-btn" id="loadMore">Показать ещё</button>
+  </main>
+
+  <!-- Right sidebar: playlist -->
+  <aside class="sidebar-right">
+    <div class="section-label">Плейлист (<span id="pCount">0</span>)</div>
+
+    <div class="pl-stats">
+      <div class="pl-stat">
+        <div class="pl-stat-num" id="statCount">0</div>
+        <div class="pl-stat-label">Треков</div>
+      </div>
+      <div class="pl-stat">
+        <div class="pl-stat-num" id="statBpm">—</div>
+        <div class="pl-stat-label">Сред. BPM</div>
+      </div>
+    </div>
+
+    <div class="playlist-scroll" id="playlistItems">
+      <div class="playlist-empty">
+        <div class="playlist-empty-icon">♩</div>
+        Плейлист пуст.<br>Добавьте треки из результатов.
+      </div>
+    </div>
+
+    <div class="playlist-footer">
+      <button class="export-btn" id="exportBtn">Скопировать список</button>
+    </div>
+  </aside>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- YouTube Player Bar -->
+<div class="yt-player-bar" id="ytPlayerBar">
+  <div class="yt-iframe-wrap">
+    <iframe id="ytIframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+  <div class="yt-track-info">
+    <div class="yt-track-name" id="ytTrackName">—</div>
+    <div class="yt-track-artist" id="ytTrackArtist">—</div>
+    <div class="yt-track-badges">
+      <span class="bpm-badge" id="ytBpm">—</span>
+      <span class="key-badge" id="ytKey">—</span>
+    </div>
+  </div>
+  <a class="yt-open-btn" id="ytOpenBtn" href="#" target="_blank" rel="noopener">
+    ▶ YouTube
+  </a>
+  <button class="yt-close-btn" id="ytCloseBtn" title="Закрыть плеер">✕</button>
+</div>
+
+<script>
+const fullDB = [
+  {id:1,n:'Группа крови',a:'Кино',b:132,k:'F#',m:'minor'},
+  {id:2,n:'Звезда по имени Солнце',a:'Кино',b:122,k:'A',m:'minor'},
+  {id:3,n:'Лесник',a:'Король и Шут',b:145,k:'E',m:'minor'},
+  {id:4,n:'Мёртвый Анархист',a:'Король и Шут',b:160,k:'D',m:'minor'},
+  {id:5,n:'Попутчик',a:'Король и Шут',b:138,k:'G',m:'minor'},
+  {id:6,n:'Мама Анархия',a:'Кино',b:128,k:'C',m:'minor'},
+  {id:7,n:'Перемен',a:'Кино',b:110,k:'E',m:'major'},
+  {id:8,n:'Пачка сигарет',a:'Кино',b:140,k:'A',m:'minor'},
+  {id:9,n:'Война',a:'Кино',b:155,k:'D',m:'minor'},
+  {id:10,n:'В наших глазах',a:'Кино',b:118,k:'B',m:'minor'},
+  {id:11,n:'Атас',a:'Ляпис Трубецкой',b:165,k:'C',m:'major'},
+  {id:12,n:'Ты кинула',a:'Ляпис Трубецкой',b:150,k:'G',m:'minor'},
+  {id:13,n:'Manifest',a:'Ляпис Трубецкой',b:142,k:'A',m:'minor'},
+  {id:14,n:'Воины света',a:'Ляпис Трубецкой',b:170,k:'E',m:'major'},
+  {id:15,n:'Путаная',a:'Ляпис Трубецкой',b:148,k:'D',m:'minor'},
+  {id:16,n:'Батарейка',a:'Жуки',b:125,k:'A',m:'major'},
+  {id:17,n:'Влюблённый самолёт',a:'Жуки',b:130,k:'C',m:'major'},
+  {id:18,n:'Дельтаплан',a:'Валерий Леонтьев',b:108,k:'F',m:'major'},
+  {id:19,n:'Чужая свадьба',a:'Сплин',b:135,k:'D',m:'minor'},
+  {id:20,n:'Катастрофически',a:'Сплин',b:120,k:'A',m:'minor'},
+  {id:21,n:'Выхода нет',a:'Сплин',b:115,k:'B',m:'minor'},
+  {id:22,n:'Романс',a:'Сплин',b:100,k:'G',m:'minor'},
+  {id:23,n:'Мне так хорошо',a:'Сплин',b:128,k:'C',m:'major'},
+  {id:24,n:'Мальчик',a:'Сплин',b:140,k:'E',m:'minor'},
+  {id:25,n:'Моё сердце',a:'Сплин',b:145,k:'F',m:'minor'},
+  {id:26,n:'Спокойная ночь',a:'Кино',b:105,k:'D',m:'major'},
+  {id:27,n:'Восьмиклассница',a:'Кино',b:118,k:'G',m:'major'},
+  {id:28,n:'Когда твоя девушка больна',a:'Кино',b:112,k:'C',m:'minor'},
+  {id:29,n:'Последний герой',a:'Кино',b:125,k:'A',m:'major'},
+  {id:30,n:'Место для шага вперёд',a:'Кино',b:138,k:'F',m:'major'},
+  {id:31,n:'Дорогой длинною',a:'Земфира',b:95,k:'G',m:'minor'},
+  {id:32,n:'Хочешь?',a:'Земфира',b:118,k:'B',m:'minor'},
+  {id:33,n:'Ариведерчи',a:'Земфира',b:130,k:'C',m:'minor'},
+  {id:34,n:'Почему',a:'Земфира',b:105,k:'A',m:'minor'},
+  {id:35,n:'Снег',a:'Земфира',b:88,k:'D',m:'major'},
+  {id:36,n:'Жить в твоей голове',a:'Земфира',b:142,k:'E',m:'minor'},
+  {id:37,n:'ПМММ',a:'Земфира',b:125,k:'F',m:'minor'},
+  {id:38,n:'Не стреляй',a:'Земфира',b:112,k:'G',m:'major'},
+  {id:39,n:'Мачо',a:'Земфира',b:148,k:'A',m:'minor'},
+  {id:40,n:'Трафик',a:'Земфира',b:135,k:'B',m:'minor'},
+  {id:41,n:'Bohemian Rhapsody',a:'Queen',b:72,k:'A#',m:'major'},
+  {id:42,n:'Don\'t Stop Me Now',a:'Queen',b:156,k:'F',m:'major'},
+  {id:43,n:'We Will Rock You',a:'Queen',b:81,k:'C',m:'major'},
+  {id:44,n:'Under Pressure',a:'Queen & David Bowie',b:114,k:'D',m:'major'},
+  {id:45,n:'Another One Bites the Dust',a:'Queen',b:110,k:'A',m:'minor'},
+  {id:46,n:'Somebody to Love',a:'Queen',b:112,k:'A#',m:'major'},
+  {id:47,n:'We Are the Champions',a:'Queen',b:63,k:'C',m:'minor'},
+  {id:48,n:'Radio Ga Ga',a:'Queen',b:118,k:'F',m:'major'},
+  {id:49,n:'The Show Must Go On',a:'Queen',b:66,k:'B',m:'minor'},
+  {id:50,n:'Killer Queen',a:'Queen',b:111,k:'A#',m:'major'},
+  {id:51,n:'Smells Like Teen Spirit',a:'Nirvana',b:117,k:'F',m:'minor'},
+  {id:52,n:'Come as You Are',a:'Nirvana',b:120,k:'F#',m:'major'},
+  {id:53,n:'Heart-Shaped Box',a:'Nirvana',b:100,k:'A',m:'minor'},
+  {id:54,n:'In Bloom',a:'Nirvana',b:144,k:'A',m:'major'},
+  {id:55,n:'Lithium',a:'Nirvana',b:124,k:'D',m:'major'},
+  {id:56,n:'Rape Me',a:'Nirvana',b:100,k:'A',m:'minor'},
+  {id:57,n:'About a Girl',a:'Nirvana',b:147,k:'E',m:'minor'},
+  {id:58,n:'All Apologies',a:'Nirvana',b:130,k:'D',m:'major'},
+  {id:59,n:'Everlong',a:'Foo Fighters',b:156,k:'D',m:'major'},
+  {id:60,n:'Best of You',a:'Foo Fighters',b:100,k:'B',m:'major'},
+  {id:61,n:'The Pretender',a:'Foo Fighters',b:135,k:'A',m:'minor'},
+  {id:62,n:'Learn to Fly',a:'Foo Fighters',b:136,k:'A',m:'major'},
+  {id:63,n:'All My Life',a:'Foo Fighters',b:148,k:'A',m:'minor'},
+  {id:64,n:'Seven Nation Army',a:'The White Stripes',b:124,k:'E',m:'minor'},
+  {id:65,n:'Hotel California',a:'Eagles',b:75,k:'B',m:'minor'},
+  {id:66,n:'Wish You Were Here',a:'Pink Floyd',b:63,k:'G',m:'major'},
+  {id:67,n:'Comfortably Numb',a:'Pink Floyd',b:63,k:'B',m:'minor'},
+  {id:68,n:'Another Brick in the Wall',a:'Pink Floyd',b:99,k:'D',m:'minor'},
+  {id:69,n:'Money',a:'Pink Floyd',b:120,k:'B',m:'minor'},
+  {id:70,n:'The Wall',a:'Pink Floyd',b:105,k:'C',m:'minor'},
+  {id:71,n:'Stairway to Heaven',a:'Led Zeppelin',b:90,k:'A',m:'minor'},
+  {id:72,n:'Kashmir',a:'Led Zeppelin',b:89,k:'D',m:'major'},
+  {id:73,n:'Whole Lotta Love',a:'Led Zeppelin',b:92,k:'E',m:'minor'},
+  {id:74,n:'Black Dog',a:'Led Zeppelin',b:113,k:'A',m:'minor'},
+  {id:75,n:'Immigrant Song',a:'Led Zeppelin',b:113,k:'F#',m:'minor'},
+  {id:76,n:'Yesterday',a:'The Beatles',b:97,k:'F',m:'major'},
+  {id:77,n:'Let It Be',a:'The Beatles',b:143,k:'C',m:'major'},
+  {id:78,n:'Hey Jude',a:'The Beatles',b:74,k:'F',m:'major'},
+  {id:79,n:'Come Together',a:'The Beatles',b:82,k:'D',m:'minor'},
+  {id:80,n:'Help!',a:'The Beatles',b:183,k:'A',m:'major'},
+  {id:81,n:'Imagine',a:'John Lennon',b:75,k:'C',m:'major'},
+  {id:82,n:'Space Oddity',a:'David Bowie',b:134,k:'C',m:'major'},
+  {id:83,n:'Heroes',a:'David Bowie',b:112,k:'D',m:'major'},
+  {id:84,n:'Let\'s Dance',a:'David Bowie',b:115,k:'A#',m:'minor'},
+  {id:85,n:'Changes',a:'David Bowie',b:132,k:'C',m:'major'},
+  {id:86,n:'Roxanne',a:'The Police',b:131,k:'A',m:'minor'},
+  {id:87,n:'Every Breath You Take',a:'The Police',b:120,k:'A',m:'major'},
+  {id:88,n:'Message in a Bottle',a:'The Police',b:148,k:'C#',m:'minor'},
+  {id:89,n:'Sweet Child O\' Mine',a:'Guns N\' Roses',b:122,k:'D',m:'major'},
+  {id:90,n:'November Rain',a:'Guns N\' Roses',b:95,k:'C',m:'major'},
+  {id:91,n:'Paradise City',a:'Guns N\' Roses',b:100,k:'G',m:'major'},
+  {id:92,n:'Welcome to the Jungle',a:'Guns N\' Roses',b:115,k:'A',m:'minor'},
+  {id:93,n:'Back in Black',a:'AC/DC',b:96,k:'E',m:'minor'},
+  {id:94,n:'Highway to Hell',a:'AC/DC',b:115,k:'A',m:'major'},
+  {id:95,n:'Thunderstruck',a:'AC/DC',b:135,k:'B',m:'minor'},
+  {id:96,n:'TNT',a:'AC/DC',b:120,k:'A',m:'major'},
+  {id:97,n:'Enter Sandman',a:'Metallica',b:122,k:'E',m:'minor'},
+  {id:98,n:'Nothing Else Matters',a:'Metallica',b:72,k:'E',m:'minor'},
+  {id:99,n:'Master of Puppets',a:'Metallica',b:212,k:'E',m:'minor'},
+  {id:100,n:'One',a:'Metallica',b:88,k:'B',m:'minor'},
+  {id:101,n:'Blinding Lights',a:'The Weeknd',b:171,k:'F#',m:'minor'},
+  {id:102,n:'Starboy',a:'The Weeknd',b:186,k:'A',m:'minor'},
+  {id:103,n:'The Hills',a:'The Weeknd',b:113,k:'C',m:'minor'},
+  {id:104,n:'Save Your Tears',a:'The Weeknd',b:118,k:'C',m:'major'},
+  {id:105,n:'Bad Guy',a:'Billie Eilish',b:135,k:'G',m:'minor'},
+  {id:106,n:'Happier Than Ever',a:'Billie Eilish',b:81,k:'C',m:'major'},
+  {id:107,n:'Ocean Eyes',a:'Billie Eilish',b:145,k:'E',m:'minor'},
+  {id:108,n:'Humble',a:'Kendrick Lamar',b:150,k:'C#',m:'minor'},
+  {id:109,n:'God\'s Plan',a:'Drake',b:77,k:'A#',m:'minor'},
+  {id:110,n:'Hotline Bling',a:'Drake',b:135,k:'F',m:'major'},
+  {id:111,n:'One Dance',a:'Drake',b:104,k:'A#',m:'minor'},
+  {id:112,n:'Sicko Mode',a:'Travis Scott',b:155,k:'F#',m:'minor'},
+  {id:113,n:'Shape of You',a:'Ed Sheeran',b:96,k:'C#',m:'minor'},
+  {id:114,n:'Perfect',a:'Ed Sheeran',b:63,k:'G#',m:'major'},
+  {id:115,n:'Bad Habits',a:'Ed Sheeran',b:126,k:'B',m:'minor'},
+  {id:116,n:'Hello',a:'Adele',b:79,k:'F',m:'minor'},
+  {id:117,n:'Rolling in the Deep',a:'Adele',b:105,k:'C',m:'minor'},
+  {id:118,n:'Someone Like You',a:'Adele',b:135,k:'A',m:'major'},
+  {id:119,n:'Happy',a:'Pharrell Williams',b:160,k:'F',m:'major'},
+  {id:120,n:'Get Lucky',a:'Daft Punk',b:116,k:'B',m:'minor'},
+  {id:121,n:'Uptown Funk',a:'Bruno Mars',b:115,k:'D',m:'minor'},
+  {id:122,n:'Locked Out of Heaven',a:'Bruno Mars',b:144,k:'D',m:'major'},
+  {id:123,n:'Don\'t Start Now',a:'Dua Lipa',b:124,k:'B',m:'minor'},
+  {id:124,n:'Levitating',a:'Dua Lipa',b:103,k:'B',m:'minor'},
+  {id:125,n:'Physical',a:'Dua Lipa',b:147,k:'A',m:'minor'},
+  {id:126,n:'Bad Romance',a:'Lady Gaga',b:119,k:'F',m:'minor'},
+  {id:127,n:'Shallow',a:'Lady Gaga',b:96,k:'G',m:'major'},
+  {id:128,n:'Poker Face',a:'Lady Gaga',b:119,k:'G#',m:'minor'},
+  {id:129,n:'Despacito',a:'Luis Fonsi',b:89,k:'B',m:'minor'},
+  {id:130,n:'Roar',a:'Katy Perry',b:180,k:'A#',m:'major'},
+  {id:131,n:'Firework',a:'Katy Perry',b:124,k:'G#',m:'major'},
+  {id:132,n:'Dark Horse',a:'Katy Perry',b:132,k:'A#',m:'minor'},
+  {id:133,n:'Thank u, next',a:'Ariana Grande',b:107,k:'D#',m:'major'},
+  {id:134,n:'7 rings',a:'Ariana Grande',b:140,k:'C#',m:'minor'},
+  {id:135,n:'Drivers License',a:'Olivia Rodrigo',b:144,k:'A#',m:'major'},
+  {id:136,n:'Good 4 U',a:'Olivia Rodrigo',b:166,k:'A',m:'major'},
+  {id:137,n:'Vampire',a:'Olivia Rodrigo',b:138,k:'F',m:'major'},
+  {id:138,n:'As It Was',a:'Harry Styles',b:174,k:'A',m:'major'},
+  {id:139,n:'Watermelon Sugar',a:'Harry Styles',b:95,k:'E',m:'major'},
+  {id:140,n:'Bohemian Rhapsody',a:'Queen',b:72,k:'A#',m:'major'},
+  {id:141,n:'Eye of the Tiger',a:'Survivor',b:109,k:'C',m:'minor'},
+  {id:142,n:'Livin\' on a Prayer',a:'Bon Jovi',b:123,k:'E',m:'minor'},
+  {id:143,n:'Don\'t Stop Believin\'',a:'Journey',b:118,k:'E',m:'major'},
+  {id:144,n:'Africa',a:'Toto',b:93,k:'A#',m:'major'},
+  {id:145,n:'Roxanne (Sting solo)',a:'Sting',b:131,k:'A',m:'minor'},
+  {id:146,n:'Under the Bridge',a:'Red Hot Chili Peppers',b:97,k:'D',m:'major'},
+  {id:147,n:'Californication',a:'Red Hot Chili Peppers',b:96,k:'A',m:'minor'},
+  {id:148,n:'By the Way',a:'Red Hot Chili Peppers',b:153,k:'A',m:'major'},
+  {id:149,n:'Give It Away',a:'Red Hot Chili Peppers',b:90,k:'E',m:'minor'},
+  {id:150,n:'Otherside',a:'Red Hot Chili Peppers',b:95,k:'A',m:'minor'},
+  {id:151,n:'Superstition',a:'Stevie Wonder',b:100,k:'E',m:'minor'},
+  {id:152,n:'Sir Duke',a:'Stevie Wonder',b:150,k:'B',m:'major'},
+  {id:153,n:'Higher Ground',a:'Stevie Wonder',b:138,k:'E',m:'minor'},
+  {id:154,n:'Isn\'t She Lovely',a:'Stevie Wonder',b:188,k:'E',m:'major'},
+  {id:155,n:'Purple Rain',a:'Prince',b:113,k:'B',m:'major'},
+  {id:156,n:'When Doves Cry',a:'Prince',b:127,k:'A',m:'minor'},
+  {id:157,n:'Kiss',a:'Prince',b:111,k:'A',m:'minor'},
+  {id:158,n:'Sign of the Times',a:'Prince',b:78,k:'A',m:'minor'},
+  {id:159,n:'Billie Jean',a:'Michael Jackson',b:117,k:'F#',m:'minor'},
+  {id:160,n:'Thriller',a:'Michael Jackson',b:118,k:'C#',m:'minor'},
+  {id:161,n:'Beat It',a:'Michael Jackson',b:138,k:'E',m:'minor'},
+  {id:162,n:'Smooth Criminal',a:'Michael Jackson',b:118,k:'A',m:'minor'},
+  {id:163,n:'Black or White',a:'Michael Jackson',b:116,k:'D#',m:'major'},
+  {id:164,n:'I Want You Back',a:'The Jackson 5',b:98,k:'A',m:'major'},
+  {id:165,n:'What\'s Going On',a:'Marvin Gaye',b:96,k:'E',m:'major'},
+  {id:166,n:'Sexual Healing',a:'Marvin Gaye',b:93,k:'E',m:'minor'},
+  {id:167,n:'Let\'s Get It On',a:'Marvin Gaye',b:80,k:'E#',m:'major'},
+  {id:168,n:'Respect',a:'Aretha Franklin',b:128,k:'C',m:'major'},
+  {id:169,n:'Chain of Fools',a:'Aretha Franklin',b:107,k:'D',m:'minor'},
+  {id:170,n:'A Change Is Gonna Come',a:'Sam Cooke',b:78,k:'C',m:'major'},
+  {id:171,n:'Blue Suede Shoes',a:'Elvis Presley',b:168,k:'A',m:'major'},
+  {id:172,n:'Hound Dog',a:'Elvis Presley',b:176,k:'C',m:'major'},
+  {id:173,n:'Jailhouse Rock',a:'Elvis Presley',b:168,k:'E',m:'major'},
+  {id:174,n:'Suspicious Minds',a:'Elvis Presley',b:126,k:'G',m:'major'},
+  {id:175,n:'Johnny B. Goode',a:'Chuck Berry',b:168,k:'B',m:'major'},
+  {id:176,n:'Good Vibrations',a:'The Beach Boys',b:148,k:'E',m:'major'},
+  {id:177,n:'God Only Knows',a:'The Beach Boys',b:82,k:'B#',m:'major'},
+  {id:178,n:'California Dreamin\'',a:'The Mamas & the Papas',b:154,k:'F',m:'minor'},
+  {id:179,n:'Mr. Tambourine Man',a:'Bob Dylan',b:96,k:'G',m:'major'},
+  {id:180,n:'Like a Rolling Stone',a:'Bob Dylan',b:96,k:'C',m:'major'},
+  {id:181,n:'Blowing in the Wind',a:'Bob Dylan',b:78,k:'F',m:'major'},
+  {id:182,n:'The Sound of Silence',a:'Simon & Garfunkel',b:97,k:'D',m:'minor'},
+  {id:183,n:'Mrs. Robinson',a:'Simon & Garfunkel',b:163,k:'E',m:'major'},
+  {id:184,n:'Bridge Over Troubled Water',a:'Simon & Garfunkel',b:74,k:'E#',m:'major'},
+  {id:185,n:'Piano Man',a:'Billy Joel',b:178,k:'C',m:'major'},
+  {id:186,n:'Piano Man (slow)',a:'Billy Joel',b:70,k:'C',m:'major'},
+  {id:187,n:'We Didn\'t Start the Fire',a:'Billy Joel',b:162,k:'A',m:'minor'},
+  {id:188,n:'It\'s Still Rock and Roll to Me',a:'Billy Joel',b:166,k:'C',m:'major'},
+  {id:189,n:'Born to Run',a:'Bruce Springsteen',b:167,k:'E',m:'major'},
+  {id:190,n:'Dancing in the Dark',a:'Bruce Springsteen',b:128,k:'E',m:'major'},
+  {id:191,n:'The River',a:'Bruce Springsteen',b:116,k:'C',m:'major'},
+  {id:192,n:'Lose Yourself',a:'Eminem',b:172,k:'D',m:'minor'},
+  {id:193,n:'Slim Shady',a:'Eminem',b:88,k:'G#',m:'minor'},
+  {id:194,n:'Stan',a:'Eminem',b:75,k:'B',m:'minor'},
+  {id:195,n:'Rap God',a:'Eminem',b:157,k:'A',m:'minor'},
+  {id:196,n:'The Next Episode',a:'Dr. Dre',b:95,k:'A',m:'minor'},
+  {id:197,n:'Gangsta\'s Paradise',a:'Coolio',b:80,k:'G#',m:'minor'},
+  {id:198,n:'C.R.E.A.M.',a:'Wu-Tang Clan',b:93,k:'A',m:'minor'},
+  {id:199,n:'Hey Ya!',a:'OutKast',b:160,k:'G',m:'major'},
+  {id:200,n:'Empire State of Mind',a:'Jay-Z',b:173,k:'F#',m:'major'}
+];
+
+const bpmSlider = document.getElementById('bpmSlider');
+const rangeSlider = document.getElementById('rangeSlider');
+const bpmVal = document.getElementById('bpmVal');
+const bpmBig = document.getElementById('bpmBig');
+const rangeVal = document.getElementById('rangeVal');
+const resultsContainer = document.getElementById('results');
+const loadMoreBtn = document.getElementById('loadMore');
+const playlistItems = document.getElementById('playlistItems');
+const pCount = document.getElementById('pCount');
+const resultsCount = document.getElementById('resultsCount');
+const countNum = document.getElementById('countNum');
+const statCount = document.getElementById('statCount');
+const statBpm = document.getElementById('statBpm');
+const toast = document.getElementById('toast');
+
+let currentResults = [], visibleCount = 0, myPlaylist = [];
+let toastTimer = null;
+
+function showToast(msg) {
+  clearTimeout(toastTimer);
+  toast.textContent = msg;
+  toast.classList.add('show');
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+}
+
+bpmSlider.oninput = () => {
+  const v = bpmSlider.value;
+  bpmVal.textContent = v + ' BPM';
+  bpmBig.textContent = v;
+};
+
+rangeSlider.oninput = () => {
+  rangeVal.textContent = '±' + rangeSlider.value;
+};
+
+document.querySelectorAll('.chips').forEach(row => {
+  row.addEventListener('click', e => {
+    if (e.target.classList.contains('chip')) {
+      row.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      e.target.classList.add('active');
+    }
+  });
+});
+
+document.getElementById('searchBtn').onclick = () => {
+  const bpm = parseInt(bpmSlider.value);
+  const range = parseInt(rangeSlider.value);
+  const key = document.querySelector('#keyRow .active').dataset.key;
+  const mode = document.querySelector('#modeRow .active').dataset.mode;
+
+  currentResults = fullDB.filter(t => {
+    const bpmMatch = Math.abs(t.b - bpm) <= range;
+    const keyMatch = key === 'any' || t.k === key;
+    const modeMatch = mode === 'any' || t.m === mode;
+    return bpmMatch && keyMatch && modeMatch;
+  }).sort((a,b) => Math.abs(a.b - bpm) - Math.abs(b.b - bpm));
+
+  visibleCount = 10;
+  renderResults(true);
+
+  resultsCount.style.opacity = '1';
+  countNum.textContent = currentResults.length;
+};
+
+function renderResults(reset) {
+  if (reset) resultsContainer.innerHTML = '';
+
+  if (currentResults.length === 0) {
+    resultsContainer.innerHTML = '<div class="empty-state"><div class="empty-icon">◎</div><p>Ничего не найдено.<br>Попробуйте изменить фильтры.</p></div>';
+    loadMoreBtn.style.display = 'none';
+    return;
+  }
+
+  const chunk = currentResults.slice(reset ? 0 : visibleCount - 10, visibleCount);
+  const startIndex = reset ? 1 : visibleCount - 9;
+
+  chunk.forEach((t, i) => {
+    const item = document.createElement('div');
+    item.className = 'track-card';
+    item.style.animationDelay = (i * 0.04) + 's';
+    item.innerHTML = `
+      <div class="track-index">${startIndex + i}</div>
+      <div class="track-info">
+        <div class="track-name">${t.n}</div>
+        <div class="track-meta">
+          <span>${t.a}</span>
+          <span class="sep"></span>
+          <span class="bpm-badge">${t.b} BPM</span>
+          <span class="key-badge">${t.k} ${t.m === 'major' ? 'maj' : 'min'}</span>
+        </div>
+      </div>
+      <button class="play-btn" title="Слушать на YouTube">▶</button>
+      <button class="add-btn" title="Добавить в плейлист">+</button>
+    `;
+    item.querySelector('.add-btn').onclick = () => addToPlaylist(t.id);
+    item.querySelector('.play-btn').onclick = () => playOnYouTube(t);
+    resultsContainer.appendChild(item);
+  });
+
+  loadMoreBtn.style.display = visibleCount < currentResults.length ? 'block' : 'none';
+}
+
+document.getElementById('loadMore').onclick = () => {
+  visibleCount += 10;
+  renderResults(false);
+};
+
+function addToPlaylist(id) {
+  const track = fullDB.find(t => t.id === id);
+  if (!track || myPlaylist.some(i => i.id === id)) {
+    showToast('Трек уже в плейлисте');
+    return;
+  }
+  myPlaylist.push(track);
+  updatePlaylistUI();
+  showToast('Добавлено: ' + track.n);
+}
+
+function removeItem(id) {
+  myPlaylist = myPlaylist.filter(i => i.id !== id);
+  updatePlaylistUI();
+}
+
+function updatePlaylistUI() {
+  pCount.textContent = myPlaylist.length;
+  statCount.textContent = myPlaylist.length;
+
+  if (myPlaylist.length === 0) {
+    statBpm.textContent = '—';
+    playlistItems.innerHTML = '<div class="playlist-empty"><div class="playlist-empty-icon">♩</div>Плейлист пуст.<br>Добавьте треки из результатов.</div>';
+    return;
+  }
+
+  const avgBpm = Math.round(myPlaylist.reduce((s, t) => s + t.b, 0) / myPlaylist.length);
+  statBpm.textContent = avgBpm;
+
+  playlistItems.innerHTML = myPlaylist.map(t => `
+    <div class="playlist-track">
+      <div class="pl-info">
+        <div class="pl-name">${t.n}</div>
+        <div class="pl-artist">${t.a}</div>
+      </div>
+      <button class="pl-remove" onclick="removeItem(${t.id})" title="Удалить">✕</button>
+    </div>
+  `).join('');
+}
+
+document.getElementById('exportBtn').onclick = () => {
+  if (myPlaylist.length === 0) { showToast('Плейлист пуст!'); return; }
+  const text = myPlaylist.map(t => `${t.a} - ${t.n}`).join('\n');
+  navigator.clipboard.writeText(text).then(() => showToast('Список скопирован!'));
+};
+
+// YouTube Player
+const ytPlayerBar = document.getElementById('ytPlayerBar');
+const ytIframe = document.getElementById('ytIframe');
+const ytTrackName = document.getElementById('ytTrackName');
+const ytTrackArtist = document.getElementById('ytTrackArtist');
+const ytBpm = document.getElementById('ytBpm');
+const ytKey = document.getElementById('ytKey');
+const ytOpenBtn = document.getElementById('ytOpenBtn');
+const ytCloseBtn = document.getElementById('ytCloseBtn');
+
+let currentPlayingId = null;
+
+function playOnYouTube(track) {
+  // Reset previous playing button
+  if (currentPlayingId !== null) {
+    document.querySelectorAll('.play-btn.playing').forEach(b => {
+      b.classList.remove('playing');
+      b.textContent = '▶';
+    });
+  }
+
+  currentPlayingId = track.id;
+
+  // Update info panel
+  ytTrackName.textContent = track.n;
+  ytTrackArtist.textContent = track.a;
+  ytBpm.textContent = track.b + ' BPM';
+  ytKey.textContent = track.k + ' ' + (track.m === 'major' ? 'maj' : 'min');
+
+  // Build search query
+  const query = encodeURIComponent(track.a + ' ' + track.n);
+  const ytSearchUrl = `https://www.youtube.com/results?search_query=${query}`;
+  const ytEmbedUrl = `https://www.youtube.com/embed?listType=search&list=${query}&autoplay=1`;
+
+  ytIframe.src = ytEmbedUrl;
+  ytOpenBtn.href = ytSearchUrl;
+
+  // Show bar
+  ytPlayerBar.classList.add('visible');
+  document.body.classList.add('player-open');
+
+  // Highlight active button
+  const playBtns = document.querySelectorAll('.play-btn');
+  playBtns.forEach((btn, i) => {
+    const card = btn.closest('.track-card');
+    if (card) {
+      const cardIndex = Array.from(card.parentNode.children).indexOf(card);
+      // match by track id via closure
+    }
+  });
+
+  // Find and highlight the right button
+  document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.closest('.track-card') && (btn.dataset.tid !== undefined) && btn.classList.remove('playing');
+  });
+
+  showToast('▶ ' + track.n);
+}
+
+ytCloseBtn.onclick = () => {
+  ytPlayerBar.classList.remove('visible');
+  document.body.classList.remove('player-open');
+  ytIframe.src = '';
+  currentPlayingId = null;
+  document.querySelectorAll('.play-btn.playing').forEach(b => {
+    b.classList.remove('playing');
+    b.textContent = '▶';
+  });
+};
+</script>
+</body>
+</html>
