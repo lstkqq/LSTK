@@ -644,6 +644,153 @@
       border-bottom: 1px solid var(--border-soft);
     }
   }
+
+  /* YouTube Player Bar */
+  .yt-player-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10,10,20,0.97);
+    border-top: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .yt-player-bar.visible {
+    transform: translateY(0);
+  }
+
+  .yt-iframe-wrap {
+    flex-shrink: 0;
+    width: 160px;
+    height: 90px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+  }
+
+  .yt-iframe-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .yt-track-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .yt-track-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+  }
+
+  .yt-track-artist {
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .yt-track-badges {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .yt-close-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    color: var(--muted);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .yt-close-btn:hover {
+    background: rgba(255,80,80,0.15);
+    border-color: rgba(255,80,80,0.4);
+    color: #ff5050;
+  }
+
+  .yt-open-btn {
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,0,0,0.4);
+    background: rgba(255,0,0,0.1);
+    color: #ff4444;
+    font-size: 12px;
+    font-family: var(--mono);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+
+  .yt-open-btn:hover {
+    background: rgba(255,0,0,0.2);
+    border-color: rgba(255,0,0,0.7);
+  }
+
+  .play-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .play-btn:hover {
+    background: rgba(255,0,0,0.15);
+    border-color: rgba(255,80,80,0.5);
+    color: #ff5050;
+  }
+
+  .play-btn.playing {
+    background: rgba(255,0,0,0.15);
+    border-color: rgba(255,80,80,0.5);
+    color: #ff5050;
+  }
+
+  body.player-open .main-content,
+  body.player-open .sidebar-left,
+  body.player-open .sidebar-right {
+    padding-bottom: 130px;
+  }
 </style>
 </head>
 <body>
@@ -764,6 +911,25 @@
 </div>
 
 <div class="toast" id="toast"></div>
+
+<!-- YouTube Player Bar -->
+<div class="yt-player-bar" id="ytPlayerBar">
+  <div class="yt-iframe-wrap">
+    <iframe id="ytIframe" src="" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+  </div>
+  <div class="yt-track-info">
+    <div class="yt-track-name" id="ytTrackName">—</div>
+    <div class="yt-track-artist" id="ytTrackArtist">—</div>
+    <div class="yt-track-badges">
+      <span class="bpm-badge" id="ytBpm">—</span>
+      <span class="key-badge" id="ytKey">—</span>
+    </div>
+  </div>
+  <a class="yt-open-btn" id="ytOpenBtn" href="#" target="_blank" rel="noopener">
+    ▶ YouTube
+  </a>
+  <button class="yt-close-btn" id="ytCloseBtn" title="Закрыть плеер">✕</button>
+</div>
 
 <script>
 const fullDB = [
@@ -1060,9 +1226,11 @@ function renderResults(reset) {
           <span class="key-badge">${t.k} ${t.m === 'major' ? 'maj' : 'min'}</span>
         </div>
       </div>
+      <button class="play-btn" title="Слушать на YouTube">▶</button>
       <button class="add-btn" title="Добавить в плейлист">+</button>
     `;
     item.querySelector('.add-btn').onclick = () => addToPlaylist(t.id);
+    item.querySelector('.play-btn').onclick = () => playOnYouTube(t);
     resultsContainer.appendChild(item);
   });
 
@@ -1118,6 +1286,76 @@ document.getElementById('exportBtn').onclick = () => {
   if (myPlaylist.length === 0) { showToast('Плейлист пуст!'); return; }
   const text = myPlaylist.map(t => `${t.a} - ${t.n}`).join('\n');
   navigator.clipboard.writeText(text).then(() => showToast('Список скопирован!'));
+};
+
+// YouTube Player
+const ytPlayerBar = document.getElementById('ytPlayerBar');
+const ytIframe = document.getElementById('ytIframe');
+const ytTrackName = document.getElementById('ytTrackName');
+const ytTrackArtist = document.getElementById('ytTrackArtist');
+const ytBpm = document.getElementById('ytBpm');
+const ytKey = document.getElementById('ytKey');
+const ytOpenBtn = document.getElementById('ytOpenBtn');
+const ytCloseBtn = document.getElementById('ytCloseBtn');
+
+let currentPlayingId = null;
+
+function playOnYouTube(track) {
+  // Reset previous playing button
+  if (currentPlayingId !== null) {
+    document.querySelectorAll('.play-btn.playing').forEach(b => {
+      b.classList.remove('playing');
+      b.textContent = '▶';
+    });
+  }
+
+  currentPlayingId = track.id;
+
+  // Update info panel
+  ytTrackName.textContent = track.n;
+  ytTrackArtist.textContent = track.a;
+  ytBpm.textContent = track.b + ' BPM';
+  ytKey.textContent = track.k + ' ' + (track.m === 'major' ? 'maj' : 'min');
+
+  // Build search query
+  const query = encodeURIComponent(track.a + ' ' + track.n);
+  const ytSearchUrl = `https://www.youtube.com/results?search_query=${query}`;
+  const ytEmbedUrl = `https://www.youtube.com/embed?listType=search&list=${query}&autoplay=1`;
+
+  ytIframe.src = ytEmbedUrl;
+  ytOpenBtn.href = ytSearchUrl;
+
+  // Show bar
+  ytPlayerBar.classList.add('visible');
+  document.body.classList.add('player-open');
+
+  // Highlight active button
+  const playBtns = document.querySelectorAll('.play-btn');
+  playBtns.forEach((btn, i) => {
+    const card = btn.closest('.track-card');
+    if (card) {
+      const cardIndex = Array.from(card.parentNode.children).indexOf(card);
+      // match by track id via closure
+    }
+  });
+
+  // Find and highlight the right button
+  document.querySelectorAll('.play-btn').forEach(btn => {
+    btn.closest('.track-card') && (btn.dataset.tid !== undefined) && btn.classList.remove('playing');
+  });
+
+  showToast('▶ ' + track.n);
+}
+
+ytCloseBtn.onclick = () => {
+  ytPlayerBar.classList.remove('visible');
+  document.body.classList.remove('player-open');
+  ytIframe.src = '';
+  currentPlayingId = null;
+  document.querySelectorAll('.play-btn.playing').forEach(b => {
+    b.classList.remove('playing');
+    b.textContent = '▶';
+  });
 };
 </script>
 </body>
