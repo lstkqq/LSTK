@@ -1,0 +1,3202 @@
+[
+  {
+    "id": 1,
+    "n": "Группа крови",
+    "a": "Кино",
+    "b": 132,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 2,
+    "n": "Звезда по имени Солнце",
+    "a": "Кино",
+    "b": 122,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 3,
+    "n": "Лесник",
+    "a": "Король и Шут",
+    "b": 145,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 4,
+    "n": "Мёртвый Анархист",
+    "a": "Король и Шут",
+    "b": 160,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 5,
+    "n": "Попутчик",
+    "a": "Король и Шут",
+    "b": 138,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 6,
+    "n": "Мама Анархия",
+    "a": "Кино",
+    "b": 128,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 7,
+    "n": "Перемен",
+    "a": "Кино",
+    "b": 110,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 8,
+    "n": "Пачка сигарет",
+    "a": "Кино",
+    "b": 140,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 9,
+    "n": "Война",
+    "a": "Кино",
+    "b": 155,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 10,
+    "n": "В наших глазах",
+    "a": "Кино",
+    "b": 118,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 11,
+    "n": "Атас",
+    "a": "Ляпис Трубецкой",
+    "b": 165,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 12,
+    "n": "Ты кинула",
+    "a": "Ляпис Трубецкой",
+    "b": 150,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 13,
+    "n": "Manifest",
+    "a": "Ляпис Трубецкой",
+    "b": 142,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 14,
+    "n": "Воины света",
+    "a": "Ляпис Трубецкой",
+    "b": 170,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 15,
+    "n": "Путаная",
+    "a": "Ляпис Трубецкой",
+    "b": 148,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 16,
+    "n": "Батарейка",
+    "a": "Жуки",
+    "b": 125,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 17,
+    "n": "Влюблённый самолёт",
+    "a": "Жуки",
+    "b": 130,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 18,
+    "n": "Дельтаплан",
+    "a": "Валерий Леонтьев",
+    "b": 108,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 19,
+    "n": "Чужая свадьба",
+    "a": "Сплин",
+    "b": 135,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 20,
+    "n": "Катастрофически",
+    "a": "Сплин",
+    "b": 120,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 21,
+    "n": "Выхода нет",
+    "a": "Сплин",
+    "b": 115,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 22,
+    "n": "Романс",
+    "a": "Сплин",
+    "b": 100,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 23,
+    "n": "Мне так хорошо",
+    "a": "Сплин",
+    "b": 128,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 24,
+    "n": "Мальчик",
+    "a": "Сплин",
+    "b": 140,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 25,
+    "n": "Моё сердце",
+    "a": "Сплин",
+    "b": 145,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 26,
+    "n": "Спокойная ночь",
+    "a": "Кино",
+    "b": 105,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 27,
+    "n": "Восьмиклассница",
+    "a": "Кино",
+    "b": 118,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 28,
+    "n": "Когда твоя девушка больна",
+    "a": "Кино",
+    "b": 112,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 29,
+    "n": "Последний герой",
+    "a": "Кино",
+    "b": 125,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 30,
+    "n": "Место для шага вперёд",
+    "a": "Кино",
+    "b": 138,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 31,
+    "n": "Дорогой длинною",
+    "a": "Земфира",
+    "b": 95,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 32,
+    "n": "Хочешь?",
+    "a": "Земфира",
+    "b": 118,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 33,
+    "n": "Ариведерчи",
+    "a": "Земфира",
+    "b": 130,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 34,
+    "n": "Почему",
+    "a": "Земфира",
+    "b": 105,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 35,
+    "n": "Снег",
+    "a": "Земфира",
+    "b": 88,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 36,
+    "n": "Жить в твоей голове",
+    "a": "Земфира",
+    "b": 142,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 37,
+    "n": "ПМММ",
+    "a": "Земфира",
+    "b": 125,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 38,
+    "n": "Не стреляй",
+    "a": "Земфира",
+    "b": 112,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 39,
+    "n": "Мачо",
+    "a": "Земфира",
+    "b": 148,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 40,
+    "n": "Трафик",
+    "a": "Земфира",
+    "b": 135,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 41,
+    "n": "Bohemian Rhapsody",
+    "a": "Queen",
+    "b": 72,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 42,
+    "n": "Don't Stop Me Now",
+    "a": "Queen",
+    "b": 156,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 43,
+    "n": "We Will Rock You",
+    "a": "Queen",
+    "b": 81,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 44,
+    "n": "Under Pressure",
+    "a": "Queen & David Bowie",
+    "b": 114,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 45,
+    "n": "Another One Bites the Dust",
+    "a": "Queen",
+    "b": 110,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 46,
+    "n": "Somebody to Love",
+    "a": "Queen",
+    "b": 112,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 47,
+    "n": "We Are the Champions",
+    "a": "Queen",
+    "b": 63,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 48,
+    "n": "Radio Ga Ga",
+    "a": "Queen",
+    "b": 118,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 49,
+    "n": "The Show Must Go On",
+    "a": "Queen",
+    "b": 66,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 50,
+    "n": "Killer Queen",
+    "a": "Queen",
+    "b": 111,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 51,
+    "n": "Smells Like Teen Spirit",
+    "a": "Nirvana",
+    "b": 117,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 52,
+    "n": "Come as You Are",
+    "a": "Nirvana",
+    "b": 120,
+    "k": "F#",
+    "m": "major"
+  },
+  {
+    "id": 53,
+    "n": "Heart-Shaped Box",
+    "a": "Nirvana",
+    "b": 100,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 54,
+    "n": "In Bloom",
+    "a": "Nirvana",
+    "b": 144,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 55,
+    "n": "Lithium",
+    "a": "Nirvana",
+    "b": 124,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 56,
+    "n": "Rape Me",
+    "a": "Nirvana",
+    "b": 100,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 57,
+    "n": "About a Girl",
+    "a": "Nirvana",
+    "b": 147,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 58,
+    "n": "All Apologies",
+    "a": "Nirvana",
+    "b": 130,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 59,
+    "n": "Everlong",
+    "a": "Foo Fighters",
+    "b": 156,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 60,
+    "n": "Best of You",
+    "a": "Foo Fighters",
+    "b": 100,
+    "k": "B",
+    "m": "major"
+  },
+  {
+    "id": 61,
+    "n": "The Pretender",
+    "a": "Foo Fighters",
+    "b": 135,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 62,
+    "n": "Learn to Fly",
+    "a": "Foo Fighters",
+    "b": 136,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 63,
+    "n": "All My Life",
+    "a": "Foo Fighters",
+    "b": 148,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 64,
+    "n": "Seven Nation Army",
+    "a": "The White Stripes",
+    "b": 124,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 65,
+    "n": "Hotel California",
+    "a": "Eagles",
+    "b": 75,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 66,
+    "n": "Wish You Were Here",
+    "a": "Pink Floyd",
+    "b": 63,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 67,
+    "n": "Comfortably Numb",
+    "a": "Pink Floyd",
+    "b": 63,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 68,
+    "n": "Another Brick in the Wall",
+    "a": "Pink Floyd",
+    "b": 99,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 69,
+    "n": "Money",
+    "a": "Pink Floyd",
+    "b": 120,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 70,
+    "n": "The Wall",
+    "a": "Pink Floyd",
+    "b": 105,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 71,
+    "n": "Stairway to Heaven",
+    "a": "Led Zeppelin",
+    "b": 90,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 72,
+    "n": "Kashmir",
+    "a": "Led Zeppelin",
+    "b": 89,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 73,
+    "n": "Whole Lotta Love",
+    "a": "Led Zeppelin",
+    "b": 92,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 74,
+    "n": "Black Dog",
+    "a": "Led Zeppelin",
+    "b": 113,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 75,
+    "n": "Immigrant Song",
+    "a": "Led Zeppelin",
+    "b": 113,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 76,
+    "n": "Yesterday",
+    "a": "The Beatles",
+    "b": 97,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 77,
+    "n": "Let It Be",
+    "a": "The Beatles",
+    "b": 143,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 78,
+    "n": "Hey Jude",
+    "a": "The Beatles",
+    "b": 74,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 79,
+    "n": "Come Together",
+    "a": "The Beatles",
+    "b": 82,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 80,
+    "n": "Help!",
+    "a": "The Beatles",
+    "b": 183,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 81,
+    "n": "Imagine",
+    "a": "John Lennon",
+    "b": 75,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 82,
+    "n": "Space Oddity",
+    "a": "David Bowie",
+    "b": 134,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 83,
+    "n": "Heroes",
+    "a": "David Bowie",
+    "b": 112,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 84,
+    "n": "Let's Dance",
+    "a": "David Bowie",
+    "b": 115,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 85,
+    "n": "Changes",
+    "a": "David Bowie",
+    "b": 132,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 86,
+    "n": "Roxanne",
+    "a": "The Police",
+    "b": 131,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 87,
+    "n": "Every Breath You Take",
+    "a": "The Police",
+    "b": 120,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 88,
+    "n": "Message in a Bottle",
+    "a": "The Police",
+    "b": 148,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 89,
+    "n": "Sweet Child O' Mine",
+    "a": "Guns N' Roses",
+    "b": 122,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 90,
+    "n": "November Rain",
+    "a": "Guns N' Roses",
+    "b": 95,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 91,
+    "n": "Paradise City",
+    "a": "Guns N' Roses",
+    "b": 100,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 92,
+    "n": "Welcome to the Jungle",
+    "a": "Guns N' Roses",
+    "b": 115,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 93,
+    "n": "Back in Black",
+    "a": "AC/DC",
+    "b": 96,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 94,
+    "n": "Highway to Hell",
+    "a": "AC/DC",
+    "b": 115,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 95,
+    "n": "Thunderstruck",
+    "a": "AC/DC",
+    "b": 135,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 96,
+    "n": "TNT",
+    "a": "AC/DC",
+    "b": 120,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 97,
+    "n": "Enter Sandman",
+    "a": "Metallica",
+    "b": 122,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 98,
+    "n": "Nothing Else Matters",
+    "a": "Metallica",
+    "b": 72,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 99,
+    "n": "Master of Puppets",
+    "a": "Metallica",
+    "b": 212,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 100,
+    "n": "One",
+    "a": "Metallica",
+    "b": 88,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 101,
+    "n": "Blinding Lights",
+    "a": "The Weeknd",
+    "b": 171,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 102,
+    "n": "Starboy",
+    "a": "The Weeknd",
+    "b": 186,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 103,
+    "n": "The Hills",
+    "a": "The Weeknd",
+    "b": 113,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 104,
+    "n": "Save Your Tears",
+    "a": "The Weeknd",
+    "b": 118,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 105,
+    "n": "Bad Guy",
+    "a": "Billie Eilish",
+    "b": 135,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 106,
+    "n": "Happier Than Ever",
+    "a": "Billie Eilish",
+    "b": 81,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 107,
+    "n": "Ocean Eyes",
+    "a": "Billie Eilish",
+    "b": 145,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 108,
+    "n": "Humble",
+    "a": "Kendrick Lamar",
+    "b": 150,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 109,
+    "n": "God's Plan",
+    "a": "Drake",
+    "b": 77,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 110,
+    "n": "Hotline Bling",
+    "a": "Drake",
+    "b": 135,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 111,
+    "n": "One Dance",
+    "a": "Drake",
+    "b": 104,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 112,
+    "n": "Sicko Mode",
+    "a": "Travis Scott",
+    "b": 155,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 113,
+    "n": "Shape of You",
+    "a": "Ed Sheeran",
+    "b": 96,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 114,
+    "n": "Perfect",
+    "a": "Ed Sheeran",
+    "b": 63,
+    "k": "G#",
+    "m": "major"
+  },
+  {
+    "id": 115,
+    "n": "Bad Habits",
+    "a": "Ed Sheeran",
+    "b": 126,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 116,
+    "n": "Hello",
+    "a": "Adele",
+    "b": 79,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 117,
+    "n": "Rolling in the Deep",
+    "a": "Adele",
+    "b": 105,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 118,
+    "n": "Someone Like You",
+    "a": "Adele",
+    "b": 135,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 119,
+    "n": "Happy",
+    "a": "Pharrell Williams",
+    "b": 160,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 120,
+    "n": "Get Lucky",
+    "a": "Daft Punk",
+    "b": 116,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 121,
+    "n": "Uptown Funk",
+    "a": "Bruno Mars",
+    "b": 115,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 122,
+    "n": "Locked Out of Heaven",
+    "a": "Bruno Mars",
+    "b": 144,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 123,
+    "n": "Don't Start Now",
+    "a": "Dua Lipa",
+    "b": 124,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 124,
+    "n": "Levitating",
+    "a": "Dua Lipa",
+    "b": 103,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 125,
+    "n": "Physical",
+    "a": "Dua Lipa",
+    "b": 147,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 126,
+    "n": "Bad Romance",
+    "a": "Lady Gaga",
+    "b": 119,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 127,
+    "n": "Shallow",
+    "a": "Lady Gaga",
+    "b": 96,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 128,
+    "n": "Poker Face",
+    "a": "Lady Gaga",
+    "b": 119,
+    "k": "G#",
+    "m": "minor"
+  },
+  {
+    "id": 129,
+    "n": "Despacito",
+    "a": "Luis Fonsi",
+    "b": 89,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 130,
+    "n": "Roar",
+    "a": "Katy Perry",
+    "b": 180,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 131,
+    "n": "Firework",
+    "a": "Katy Perry",
+    "b": 124,
+    "k": "G#",
+    "m": "major"
+  },
+  {
+    "id": 132,
+    "n": "Dark Horse",
+    "a": "Katy Perry",
+    "b": 132,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 133,
+    "n": "Thank u, next",
+    "a": "Ariana Grande",
+    "b": 107,
+    "k": "D#",
+    "m": "major"
+  },
+  {
+    "id": 134,
+    "n": "7 rings",
+    "a": "Ariana Grande",
+    "b": 140,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 135,
+    "n": "Drivers License",
+    "a": "Olivia Rodrigo",
+    "b": 144,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 136,
+    "n": "Good 4 U",
+    "a": "Olivia Rodrigo",
+    "b": 166,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 137,
+    "n": "Vampire",
+    "a": "Olivia Rodrigo",
+    "b": 138,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 138,
+    "n": "As It Was",
+    "a": "Harry Styles",
+    "b": 174,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 139,
+    "n": "Watermelon Sugar",
+    "a": "Harry Styles",
+    "b": 95,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 140,
+    "n": "Bohemian Rhapsody",
+    "a": "Queen",
+    "b": 72,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 141,
+    "n": "Eye of the Tiger",
+    "a": "Survivor",
+    "b": 109,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 142,
+    "n": "Livin' on a Prayer",
+    "a": "Bon Jovi",
+    "b": 123,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 143,
+    "n": "Don't Stop Believin'",
+    "a": "Journey",
+    "b": 118,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 144,
+    "n": "Africa",
+    "a": "Toto",
+    "b": 93,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 145,
+    "n": "Roxanne (Sting solo)",
+    "a": "Sting",
+    "b": 131,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 146,
+    "n": "Under the Bridge",
+    "a": "Red Hot Chili Peppers",
+    "b": 97,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 147,
+    "n": "Californication",
+    "a": "Red Hot Chili Peppers",
+    "b": 96,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 148,
+    "n": "By the Way",
+    "a": "Red Hot Chili Peppers",
+    "b": 153,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 149,
+    "n": "Give It Away",
+    "a": "Red Hot Chili Peppers",
+    "b": 90,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 150,
+    "n": "Otherside",
+    "a": "Red Hot Chili Peppers",
+    "b": 95,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 151,
+    "n": "Superstition",
+    "a": "Stevie Wonder",
+    "b": 100,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 152,
+    "n": "Sir Duke",
+    "a": "Stevie Wonder",
+    "b": 150,
+    "k": "B",
+    "m": "major"
+  },
+  {
+    "id": 153,
+    "n": "Higher Ground",
+    "a": "Stevie Wonder",
+    "b": 138,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 154,
+    "n": "Isn't She Lovely",
+    "a": "Stevie Wonder",
+    "b": 188,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 155,
+    "n": "Purple Rain",
+    "a": "Prince",
+    "b": 113,
+    "k": "B",
+    "m": "major"
+  },
+  {
+    "id": 156,
+    "n": "When Doves Cry",
+    "a": "Prince",
+    "b": 127,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 157,
+    "n": "Kiss",
+    "a": "Prince",
+    "b": 111,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 158,
+    "n": "Sign of the Times",
+    "a": "Prince",
+    "b": 78,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 159,
+    "n": "Billie Jean",
+    "a": "Michael Jackson",
+    "b": 117,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 160,
+    "n": "Thriller",
+    "a": "Michael Jackson",
+    "b": 118,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 161,
+    "n": "Beat It",
+    "a": "Michael Jackson",
+    "b": 138,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 162,
+    "n": "Smooth Criminal",
+    "a": "Michael Jackson",
+    "b": 118,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 163,
+    "n": "Black or White",
+    "a": "Michael Jackson",
+    "b": 116,
+    "k": "D#",
+    "m": "major"
+  },
+  {
+    "id": 164,
+    "n": "I Want You Back",
+    "a": "The Jackson 5",
+    "b": 98,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 165,
+    "n": "What's Going On",
+    "a": "Marvin Gaye",
+    "b": 96,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 166,
+    "n": "Sexual Healing",
+    "a": "Marvin Gaye",
+    "b": 93,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 167,
+    "n": "Let's Get It On",
+    "a": "Marvin Gaye",
+    "b": 80,
+    "k": "E#",
+    "m": "major"
+  },
+  {
+    "id": 168,
+    "n": "Respect",
+    "a": "Aretha Franklin",
+    "b": 128,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 169,
+    "n": "Chain of Fools",
+    "a": "Aretha Franklin",
+    "b": 107,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 170,
+    "n": "A Change Is Gonna Come",
+    "a": "Sam Cooke",
+    "b": 78,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 171,
+    "n": "Blue Suede Shoes",
+    "a": "Elvis Presley",
+    "b": 168,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 172,
+    "n": "Hound Dog",
+    "a": "Elvis Presley",
+    "b": 176,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 173,
+    "n": "Jailhouse Rock",
+    "a": "Elvis Presley",
+    "b": 168,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 174,
+    "n": "Suspicious Minds",
+    "a": "Elvis Presley",
+    "b": 126,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 175,
+    "n": "Johnny B. Goode",
+    "a": "Chuck Berry",
+    "b": 168,
+    "k": "B",
+    "m": "major"
+  },
+  {
+    "id": 176,
+    "n": "Good Vibrations",
+    "a": "The Beach Boys",
+    "b": 148,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 177,
+    "n": "God Only Knows",
+    "a": "The Beach Boys",
+    "b": 82,
+    "k": "B#",
+    "m": "major"
+  },
+  {
+    "id": 178,
+    "n": "California Dreamin'",
+    "a": "The Mamas & the Papas",
+    "b": 154,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 179,
+    "n": "Mr. Tambourine Man",
+    "a": "Bob Dylan",
+    "b": 96,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 180,
+    "n": "Like a Rolling Stone",
+    "a": "Bob Dylan",
+    "b": 96,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 181,
+    "n": "Blowing in the Wind",
+    "a": "Bob Dylan",
+    "b": 78,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 182,
+    "n": "The Sound of Silence",
+    "a": "Simon & Garfunkel",
+    "b": 97,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 183,
+    "n": "Mrs. Robinson",
+    "a": "Simon & Garfunkel",
+    "b": 163,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 184,
+    "n": "Bridge Over Troubled Water",
+    "a": "Simon & Garfunkel",
+    "b": 74,
+    "k": "E#",
+    "m": "major"
+  },
+  {
+    "id": 185,
+    "n": "Piano Man",
+    "a": "Billy Joel",
+    "b": 178,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 186,
+    "n": "Piano Man (slow)",
+    "a": "Billy Joel",
+    "b": 70,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 187,
+    "n": "We Didn't Start the Fire",
+    "a": "Billy Joel",
+    "b": 162,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 188,
+    "n": "It's Still Rock and Roll to Me",
+    "a": "Billy Joel",
+    "b": 166,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 189,
+    "n": "Born to Run",
+    "a": "Bruce Springsteen",
+    "b": 167,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 190,
+    "n": "Dancing in the Dark",
+    "a": "Bruce Springsteen",
+    "b": 128,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 191,
+    "n": "The River",
+    "a": "Bruce Springsteen",
+    "b": 116,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 192,
+    "n": "Lose Yourself",
+    "a": "Eminem",
+    "b": 172,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 193,
+    "n": "Slim Shady",
+    "a": "Eminem",
+    "b": 88,
+    "k": "G#",
+    "m": "minor"
+  },
+  {
+    "id": 194,
+    "n": "Stan",
+    "a": "Eminem",
+    "b": 75,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 195,
+    "n": "Rap God",
+    "a": "Eminem",
+    "b": 157,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 196,
+    "n": "The Next Episode",
+    "a": "Dr. Dre",
+    "b": 95,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 197,
+    "n": "Gangsta's Paradise",
+    "a": "Coolio",
+    "b": 80,
+    "k": "G#",
+    "m": "minor"
+  },
+  {
+    "id": 198,
+    "n": "C.R.E.A.M.",
+    "a": "Wu-Tang Clan",
+    "b": 93,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 199,
+    "n": "Hey Ya!",
+    "a": "OutKast",
+    "b": 160,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 200,
+    "n": "Empire State of Mind",
+    "a": "Jay-Z",
+    "b": 173,
+    "k": "F#",
+    "m": "major"
+  },
+  {
+    "id": 201,
+    "n": "Sultans of Swing",
+    "a": "Dire Straits",
+    "b": 148,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 202,
+    "n": "Money for Nothing",
+    "a": "Dire Straits",
+    "b": 134,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 203,
+    "n": "Creep",
+    "a": "Radiohead",
+    "b": 92,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 204,
+    "n": "Karma Police",
+    "a": "Radiohead",
+    "b": 75,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 205,
+    "n": "No Surprises",
+    "a": "Radiohead",
+    "b": 76,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 206,
+    "n": "Clocks",
+    "a": "Coldplay",
+    "b": 131,
+    "k": "D#",
+    "m": "major"
+  },
+  {
+    "id": 207,
+    "n": "Viva La Vida",
+    "a": "Coldplay",
+    "b": 138,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 208,
+    "n": "Yellow",
+    "a": "Coldplay",
+    "b": 87,
+    "k": "B",
+    "m": "major"
+  },
+  {
+    "id": 209,
+    "n": "Numb",
+    "a": "Linkin Park",
+    "b": 110,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 210,
+    "n": "In the End",
+    "a": "Linkin Park",
+    "b": 105,
+    "k": "D#",
+    "m": "minor"
+  },
+  {
+    "id": 211,
+    "n": "Crawling",
+    "a": "Linkin Park",
+    "b": 105,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 212,
+    "n": "Faint",
+    "a": "Linkin Park",
+    "b": 135,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 213,
+    "n": "Dream On",
+    "a": "Aerosmith",
+    "b": 80,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 214,
+    "n": "Walk This Way",
+    "a": "Aerosmith",
+    "b": 109,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 215,
+    "n": "I Don't Want to Miss a Thing",
+    "a": "Aerosmith",
+    "b": 61,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 216,
+    "n": "Zombie",
+    "a": "The Cranberries",
+    "b": 167,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 217,
+    "n": "Linger",
+    "a": "The Cranberries",
+    "b": 121,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 218,
+    "n": "Hallelujah",
+    "a": "Jeff Buckley",
+    "b": 102,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 219,
+    "n": "Personal Jesus",
+    "a": "Depeche Mode",
+    "b": 130,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 220,
+    "n": "Enjoy the Silence",
+    "a": "Depeche Mode",
+    "b": 113,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 221,
+    "n": "Take On Me",
+    "a": "a-ha",
+    "b": 169,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 222,
+    "n": "Beat It",
+    "a": "Michael Jackson",
+    "b": 138,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 223,
+    "n": "Wonderwall",
+    "a": "Oasis",
+    "b": 174,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 224,
+    "n": "Don't Look Back in Anger",
+    "a": "Oasis",
+    "b": 82,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 225,
+    "n": "Bittersweet Symphony",
+    "a": "The Verve",
+    "b": 171,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 226,
+    "n": "Полковнику никто не пишет",
+    "a": "Би-2",
+    "b": 140,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 227,
+    "n": "Варвара",
+    "a": "Би-2",
+    "b": 120,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 228,
+    "n": "Серебро",
+    "a": "Би-2",
+    "b": 95,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 229,
+    "n": "Владивосток 2000",
+    "a": "Мумий Тролль",
+    "b": 142,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 230,
+    "n": "Утекай",
+    "a": "Мумий Тролль",
+    "b": 105,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 231,
+    "n": "Медведица",
+    "a": "Мумий Тролль",
+    "b": 125,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 232,
+    "n": "Город золотой",
+    "a": "Аквариум",
+    "b": 105,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 233,
+    "n": "Поезд в огне",
+    "a": "Аквариум",
+    "b": 115,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 234,
+    "n": "Аргентина-Ямайка 5:0",
+    "a": "Чайф",
+    "b": 110,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 235,
+    "n": "Ой-йо",
+    "a": "Чайф",
+    "b": 85,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 236,
+    "n": "Кукла колдуна",
+    "a": "Король и Шут",
+    "b": 152,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 237,
+    "n": "Прыгну со скалы",
+    "a": "Король и Шут",
+    "b": 130,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 238,
+    "n": "Дурак и молния",
+    "a": "Король и Шут",
+    "b": 155,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 239,
+    "n": "Проклятый старый дом",
+    "a": "Король и Шут",
+    "b": 140,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 240,
+    "n": "Сансара",
+    "a": "Баста",
+    "b": 90,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 241,
+    "n": "Я люблю тебя до слёз",
+    "a": "Александр Серов",
+    "b": 75,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 242,
+    "n": "Трава у дома",
+    "a": "Земляне",
+    "b": 122,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 243,
+    "n": "Беспечный ангел",
+    "a": "Ария",
+    "b": 80,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 244,
+    "n": "Штиль",
+    "a": "Ария",
+    "b": 72,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 245,
+    "n": "Я свободен",
+    "a": "Кипелов",
+    "b": 68,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 246,
+    "n": "Hells Bells",
+    "a": "AC/DC",
+    "b": 106,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 247,
+    "n": "Shoot to Thrill",
+    "a": "AC/DC",
+    "b": 141,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 248,
+    "n": "The Trooper",
+    "a": "Iron Maiden",
+    "b": 160,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 249,
+    "n": "Fear of the Dark",
+    "a": "Iron Maiden",
+    "b": 110,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 250,
+    "n": "Ace of Spades",
+    "a": "Motörhead",
+    "b": 140,
+    "k": "D#",
+    "m": "minor"
+  },
+  {
+    "id": 251,
+    "n": "Что такое осень",
+    "a": "ДДТ",
+    "b": 124,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 252,
+    "n": "Это всё...",
+    "a": "ДДТ",
+    "b": 85,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 253,
+    "n": "Просвистела",
+    "a": "ДДТ",
+    "b": 135,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 254,
+    "n": "Скованные одной цепью",
+    "a": "Наутилус Помпилиус",
+    "b": 118,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 255,
+    "n": "Прогулки по воде",
+    "a": "Наутилус Помпилиус",
+    "b": 115,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 256,
+    "n": "Последнее письмо",
+    "a": "Наутилус Помпилиус",
+    "b": 90,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 257,
+    "n": "Дыхание",
+    "a": "Наутилус Помпилиус",
+    "b": 125,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 258,
+    "n": "Всё идёт по плану",
+    "a": "Гражданская Оборона",
+    "b": 120,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 259,
+    "n": "Моя оборона",
+    "a": "Гражданская Оборона",
+    "b": 145,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 260,
+    "n": "Хара Мамбуру",
+    "a": "Ногу Свело!",
+    "b": 138,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 261,
+    "n": "Как на войне",
+    "a": "Агата Кристи",
+    "b": 128,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 262,
+    "n": "Опиум для никого",
+    "a": "Агата Кристи",
+    "b": 112,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 263,
+    "n": "Сказочная тайга",
+    "a": "Агата Кристи",
+    "b": 135,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 264,
+    "n": "Du Hast",
+    "a": "Rammstein",
+    "b": 125,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 265,
+    "n": "Sonne",
+    "a": "Rammstein",
+    "b": 75,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 266,
+    "n": "Deutschland",
+    "a": "Rammstein",
+    "b": 120,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 267,
+    "n": "Mutter",
+    "a": "Rammstein",
+    "b": 72,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 268,
+    "n": "Toxicity",
+    "a": "System of a Down",
+    "b": 117,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 269,
+    "n": "Chop Suey!",
+    "a": "System of a Down",
+    "b": 127,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 270,
+    "n": "Aerials",
+    "a": "System of a Down",
+    "b": 85,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 271,
+    "n": "Lonely Day",
+    "a": "System of a Down",
+    "b": 63,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 272,
+    "n": "Personal Jesus",
+    "a": "Johnny Cash",
+    "b": 110,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 273,
+    "n": "Hurt",
+    "a": "Johnny Cash",
+    "b": 69,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 274,
+    "n": "Ring of Fire",
+    "a": "Johnny Cash",
+    "b": 104,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 275,
+    "n": "Seven Nation Army",
+    "a": "The White Stripes",
+    "b": 124,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 276,
+    "n": "Sweet Dreams",
+    "a": "Eurythmics",
+    "b": 125,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 277,
+    "n": "Holding Out for a Hero",
+    "a": "Bonnie Tyler",
+    "b": 150,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 278,
+    "n": "Total Eclipse of the Heart",
+    "a": "Bonnie Tyler",
+    "b": 69,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 279,
+    "n": "U Can't Touch This",
+    "a": "MC Hammer",
+    "b": 133,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 280,
+    "n": "Ice Ice Baby",
+    "a": "Vanilla Ice",
+    "b": 113,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 281,
+    "n": "Stronger",
+    "a": "Kanye West",
+    "b": 104,
+    "k": "D#",
+    "m": "minor"
+  },
+  {
+    "id": 282,
+    "n": "Heartless",
+    "a": "Kanye West",
+    "b": 88,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 283,
+    "n": "Gold Digger",
+    "a": "Kanye West",
+    "b": 93,
+    "k": "G#",
+    "m": "minor"
+  },
+  {
+    "id": 284,
+    "n": "In da Club",
+    "a": "50 Cent",
+    "b": 90,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 285,
+    "n": "Candy Shop",
+    "a": "50 Cent",
+    "b": 125,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 286,
+    "n": "California Love",
+    "a": "2Pac",
+    "b": 92,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 287,
+    "n": "Changes",
+    "a": "2Pac",
+    "b": 111,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 288,
+    "n": "Clint Eastwood",
+    "a": "Gorillaz",
+    "b": 168,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 289,
+    "n": "Feel Good Inc.",
+    "a": "Gorillaz",
+    "b": 139,
+    "k": "D#",
+    "m": "minor"
+  },
+  {
+    "id": 290,
+    "n": "Take Me to Church",
+    "a": "Hozier",
+    "b": 129,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 291,
+    "n": "Radioactive",
+    "a": "Imagine Dragons",
+    "b": 136,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 292,
+    "n": "Believer",
+    "a": "Imagine Dragons",
+    "b": 125,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 293,
+    "n": "Thunder",
+    "a": "Imagine Dragons",
+    "b": 168,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 294,
+    "n": "Demons",
+    "a": "Imagine Dragons",
+    "b": 90,
+    "k": "D#",
+    "m": "major"
+  },
+  {
+    "id": 295,
+    "n": "Sugar",
+    "a": "Maroon 5",
+    "b": 120,
+    "k": "C#",
+    "m": "major"
+  },
+  {
+    "id": 296,
+    "n": "Moves Like Jagger",
+    "a": "Maroon 5",
+    "b": 128,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 297,
+    "n": "Flowers",
+    "a": "Miley Cyrus",
+    "b": 118,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 298,
+    "n": "Wrecking Ball",
+    "a": "Miley Cyrus",
+    "b": 120,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 299,
+    "n": "Royals",
+    "a": "Lorde",
+    "b": 85,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 300,
+    "n": "Rolling in the Deep",
+    "a": "Adele",
+    "b": 105,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 301,
+    "n": "Проклятый старый дом",
+    "a": "Король и Шут",
+    "b": 140,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 302,
+    "n": "Ели мясо мужики",
+    "a": "Король и Шут",
+    "b": 150,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 303,
+    "n": "Кукла колдуна",
+    "a": "Король и Шут",
+    "b": 152,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 304,
+    "n": "Прыгну со скалы",
+    "a": "Король и Шут",
+    "b": 130,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 305,
+    "n": "Линия жизни",
+    "a": "Сплин",
+    "b": 125,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 306,
+    "n": "Гни свою линию",
+    "a": "Сплин",
+    "b": 105,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 307,
+    "n": "Орбит без сахара",
+    "a": "Сплин",
+    "b": 118,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 308,
+    "n": "Вечно молодой",
+    "a": "Смысловые Галлюцинации",
+    "b": 115,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 309,
+    "n": "Зачем топтать мою любовь",
+    "a": "Смысловые Галлюцинации",
+    "b": 120,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 310,
+    "n": "Владивосток 2000",
+    "a": "Мумий Тролль",
+    "b": 142,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 311,
+    "n": "Утекай",
+    "a": "Мумий Тролль",
+    "b": 105,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 312,
+    "n": "Медведица",
+    "a": "Мумий Тролль",
+    "b": 125,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 313,
+    "n": "Позови меня с собой",
+    "a": "Алла Пугачёва",
+    "b": 105,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 314,
+    "n": "Миллион алых роз",
+    "a": "Алла Пугачёва",
+    "b": 120,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 315,
+    "n": "Boulevard of Broken Dreams",
+    "a": "Green Day",
+    "b": 84,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 316,
+    "n": "American Idiot",
+    "a": "Green Day",
+    "b": 186,
+    "k": "G#",
+    "m": "major"
+  },
+  {
+    "id": 317,
+    "n": "21 Guns",
+    "a": "Green Day",
+    "b": 80,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 318,
+    "n": "Wake Me Up When September Ends",
+    "a": "Green Day",
+    "b": 103,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 319,
+    "n": "Do I Wanna Know?",
+    "a": "Arctic Monkeys",
+    "b": 85,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 320,
+    "n": "R U Mine?",
+    "a": "Arctic Monkeys",
+    "b": 97,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 321,
+    "n": "Mr. Brightside",
+    "a": "The Killers",
+    "b": 148,
+    "k": "C#",
+    "m": "major"
+  },
+  {
+    "id": 322,
+    "n": "Somebody Told Me",
+    "a": "The Killers",
+    "b": 138,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 323,
+    "n": "Human",
+    "a": "The Killers",
+    "b": 135,
+    "k": "A#",
+    "m": "major"
+  },
+  {
+    "id": 324,
+    "n": "Sex on Fire",
+    "a": "Kings of Leon",
+    "b": 153,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 325,
+    "n": "Use Somebody",
+    "a": "Kings of Leon",
+    "b": 137,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 326,
+    "n": "The Scientist",
+    "a": "Coldplay",
+    "b": 73,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 327,
+    "n": "Paradise",
+    "a": "Coldplay",
+    "b": 140,
+    "k": "F",
+    "m": "major"
+  },
+  {
+    "id": 328,
+    "n": "Firestarter",
+    "a": "The Prodigy",
+    "b": 140,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 329,
+    "n": "Breathe",
+    "a": "The Prodigy",
+    "b": 130,
+    "k": "F",
+    "m": "minor"
+  },
+  {
+    "id": 330,
+    "n": "Smack My Bitch Up",
+    "a": "The Prodigy",
+    "b": 136,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 331,
+    "n": "Blue Monday",
+    "a": "New Order",
+    "b": 130,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 332,
+    "n": "Song 2",
+    "a": "Blur",
+    "b": 130,
+    "k": "F#",
+    "m": "major"
+  },
+  {
+    "id": 333,
+    "n": "Enjoy the Silence",
+    "a": "Depeche Mode",
+    "b": 113,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 334,
+    "n": "Personal Jesus",
+    "a": "Depeche Mode",
+    "b": 130,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 335,
+    "n": "Policy of Truth",
+    "a": "Depeche Mode",
+    "b": 113,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 336,
+    "n": "Walking in My Shoes",
+    "a": "Depeche Mode",
+    "b": 94,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 337,
+    "n": "Lose Control",
+    "a": "Missy Elliott",
+    "b": 125,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 338,
+    "n": "Work It",
+    "a": "Missy Elliott",
+    "b": 102,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 339,
+    "n": "Toxic",
+    "a": "Britney Spears",
+    "b": 143,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 340,
+    "n": "Oops!... I Did It Again",
+    "a": "Britney Spears",
+    "b": 95,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 341,
+    "n": "Baby One More Time",
+    "a": "Britney Spears",
+    "b": 93,
+    "k": "C",
+    "m": "minor"
+  },
+  {
+    "id": 342,
+    "n": "Umbrella",
+    "a": "Rihanna",
+    "b": 174,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 343,
+    "n": "Diamonds",
+    "a": "Rihanna",
+    "b": 92,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 344,
+    "n": "We Found Love",
+    "a": "Rihanna",
+    "b": 128,
+    "k": "F#",
+    "m": "major"
+  },
+  {
+    "id": 345,
+    "n": "Crazy in Love",
+    "a": "Beyoncé",
+    "b": 99,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 346,
+    "n": "Single Ladies",
+    "a": "Beyoncé",
+    "b": 97,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 347,
+    "n": "Halo",
+    "a": "Beyoncé",
+    "b": 80,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 348,
+    "n": "Hips Don't Lie",
+    "a": "Shakira",
+    "b": 100,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 349,
+    "n": "Whenever, Wherever",
+    "a": "Shakira",
+    "b": 104,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 350,
+    "n": "Waka Waka",
+    "a": "Shakira",
+    "b": 127,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 351,
+    "n": "Light My Fire",
+    "a": "The Doors",
+    "b": 127,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 352,
+    "n": "Riders on the Storm",
+    "a": "The Doors",
+    "b": 104,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 353,
+    "n": "Break On Through",
+    "a": "The Doors",
+    "b": 180,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 354,
+    "n": "Paranoid",
+    "a": "Black Sabbath",
+    "b": 163,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 355,
+    "n": "Iron Man",
+    "a": "Black Sabbath",
+    "b": 79,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 356,
+    "n": "War Pigs",
+    "a": "Black Sabbath",
+    "b": 92,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 357,
+    "n": "Smoke on the Water",
+    "a": "Deep Purple",
+    "b": 114,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 358,
+    "n": "Highway Star",
+    "a": "Deep Purple",
+    "b": 173,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 359,
+    "n": "Burn",
+    "a": "Deep Purple",
+    "b": 184,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 360,
+    "n": "In the Shadow of the Valley",
+    "a": "Fallout New Vegas (Lonesome Drifter)",
+    "b": 100,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 361,
+    "n": "Spoonman",
+    "a": "Soundgarden",
+    "b": 135,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 362,
+    "n": "Black Hole Sun",
+    "a": "Soundgarden",
+    "b": 104,
+    "k": "G",
+    "m": "minor"
+  },
+  {
+    "id": 363,
+    "n": "Jeremy",
+    "a": "Pearl Jam",
+    "b": 113,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 364,
+    "n": "Alive",
+    "a": "Pearl Jam",
+    "b": 150,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 365,
+    "n": "Even Flow",
+    "a": "Pearl Jam",
+    "b": 104,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 366,
+    "n": "Black",
+    "a": "Pearl Jam",
+    "b": 102,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 367,
+    "n": "Plush",
+    "a": "Stone Temple Pilots",
+    "b": 72,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 368,
+    "n": "Interstate Love Song",
+    "a": "Stone Temple Pilots",
+    "b": 120,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 369,
+    "n": "Killing in the Name",
+    "a": "Rage Against the Machine",
+    "b": 88,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 370,
+    "n": "Bulls on Parade",
+    "a": "Rage Against the Machine",
+    "b": 90,
+    "k": "F#",
+    "m": "minor"
+  },
+  {
+    "id": 371,
+    "n": "The Kids Aren't Alright",
+    "a": "The Offspring",
+    "b": 158,
+    "k": "A#",
+    "m": "minor"
+  },
+  {
+    "id": 372,
+    "n": "Self Esteem",
+    "a": "The Offspring",
+    "b": 105,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 373,
+    "n": "Pretty Fly (For a White Guy)",
+    "a": "The Offspring",
+    "b": 144,
+    "k": "B",
+    "m": "minor"
+  },
+  {
+    "id": 374,
+    "n": "All the Small Things",
+    "a": "Blink-182",
+    "b": 149,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 375,
+    "n": "What's My Age Again?",
+    "a": "Blink-182",
+    "b": 158,
+    "k": "F#",
+    "m": "major"
+  },
+  {
+    "id": 376,
+    "n": "Basket Case",
+    "a": "Green Day",
+    "b": 175,
+    "k": "D#",
+    "m": "major"
+  },
+  {
+    "id": 377,
+    "n": "Should I Stay or Should I Go",
+    "a": "The Clash",
+    "b": 113,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 378,
+    "n": "London Calling",
+    "a": "The Clash",
+    "b": 134,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 379,
+    "n": "Anarchy in the U.K.",
+    "a": "Sex Pistols",
+    "b": 131,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 380,
+    "n": "God Save the Queen",
+    "a": "Sex Pistols",
+    "b": 148,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 381,
+    "n": "Sweet Home Alabama",
+    "a": "Lynyrd Skynyrd",
+    "b": 98,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 382,
+    "n": "Free Bird",
+    "a": "Lynyrd Skynyrd",
+    "b": 118,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 383,
+    "n": "Walk",
+    "a": "Pantera",
+    "b": 118,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 384,
+    "n": "Cowboys from Hell",
+    "a": "Pantera",
+    "b": 114,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 385,
+    "n": "Holy Wars... The Punishment Due",
+    "a": "Megadeth",
+    "b": 167,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 386,
+    "n": "Symphony of Destruction",
+    "a": "Megadeth",
+    "b": 140,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 387,
+    "n": "Raining Blood",
+    "a": "Slayer",
+    "b": 210,
+    "k": "D#",
+    "m": "minor"
+  },
+  {
+    "id": 388,
+    "n": "Angels",
+    "a": "Robbie Williams",
+    "b": 75,
+    "k": "E",
+    "m": "major"
+  },
+  {
+    "id": 389,
+    "n": "No Woman, No Cry",
+    "a": "Bob Marley",
+    "b": 78,
+    "k": "C",
+    "m": "major"
+  },
+  {
+    "id": 390,
+    "n": "Redemption Song",
+    "a": "Bob Marley",
+    "b": 116,
+    "k": "G",
+    "m": "major"
+  },
+  {
+    "id": 391,
+    "n": "Buffalo Soldier",
+    "a": "Bob Marley",
+    "b": 124,
+    "k": "A",
+    "m": "major"
+  },
+  {
+    "id": 392,
+    "n": "Summer of '69",
+    "a": "Bryan Adams",
+    "b": 139,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 393,
+    "n": "Run to the Hills",
+    "a": "Iron Maiden",
+    "b": 174,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 394,
+    "n": "Points of Authority",
+    "a": "Linkin Park",
+    "b": 95,
+    "k": "A",
+    "m": "minor"
+  },
+  {
+    "id": 395,
+    "n": "One Step Closer",
+    "a": "Linkin Park",
+    "b": 95,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 396,
+    "n": "Papercut",
+    "a": "Linkin Park",
+    "b": 75,
+    "k": "D",
+    "m": "minor"
+  },
+  {
+    "id": 397,
+    "n": "Somewhere I Belong",
+    "a": "Linkin Park",
+    "b": 81,
+    "k": "C#",
+    "m": "minor"
+  },
+  {
+    "id": 398,
+    "n": "Breaking the Habit",
+    "a": "Linkin Park",
+    "b": 100,
+    "k": "E",
+    "m": "minor"
+  },
+  {
+    "id": 399,
+    "n": "My Sacrifice",
+    "a": "Creed",
+    "b": 75,
+    "k": "D",
+    "m": "major"
+  },
+  {
+    "id": 400,
+    "n": "Higher",
+    "a": "Creed",
+    "b": 156,
+    "k": "D",
+    "m": "major"
+  }
+]
